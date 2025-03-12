@@ -22,6 +22,10 @@ public class Client {
     @Column(length = 15)
     private String phone;
 
+    @ManyToMany()
+    @JoinColumn(name = "sale_id")
+    private Sale sale;
+
     public long getId() {
         return id;
     }
@@ -60,5 +64,13 @@ public class Client {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
     }
 }

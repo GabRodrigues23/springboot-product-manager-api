@@ -40,6 +40,10 @@ public class Product {
     @JoinColumn(name = "product_id")
     private Category category;
 
+    @ManyToMany
+    @JoinColumn(name = "sale_id")
+    private Sale sale;
+
     public long getId() {
         return id;
     }
@@ -110,5 +114,13 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
     }
 }

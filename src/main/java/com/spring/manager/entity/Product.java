@@ -36,6 +36,10 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime updateAt;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Category category;
+
     public long getId() {
         return id;
     }
@@ -82,5 +86,29 @@ public class Product {
 
     public void setStock(long stock) {
         this.stock = stock;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(LocalDateTime updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

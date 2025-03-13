@@ -2,6 +2,7 @@ package com.spring.manager.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import org.hibernate.annotations.*;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
@@ -37,12 +38,11 @@ public class Product {
     private LocalDateTime updateAt;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToMany
-    @JoinColumn(name = "sale_id")
-    private Sale sale;
+    @ManyToMany(mappedBy = "products")
+    private List<Sale> sales;
 
     public long getId() {
         return id;
@@ -116,11 +116,11 @@ public class Product {
         this.category = category;
     }
 
-    public Sale getSale() {
-        return sale;
+    public List<Sale> getSales() {
+        return sales;
     }
 
-    public void setSale(Sale sale) {
-        this.sale = sale;
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
     }
 }

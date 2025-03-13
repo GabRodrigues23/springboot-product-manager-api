@@ -24,11 +24,14 @@ public class Sale {
     @Column(nullable = false, length = 2)
     private String payment;
     
-    @ManyToMany(mappedBy = "product")
+    @ManyToMany()
+    @JoinTable(name = "SALE_PRODUCT", joinColumns = @JoinColumn(name = "sale_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products;
-    
-    @ManyToMany(mappedBy = "client")
-    private List<Client> clients;
+
+    @ManyToMany()
+    @JoinTable(name = "SALE_CLIENT", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> clients;
+
 
     public long getId() {
         return id;
@@ -78,11 +81,11 @@ public class Sale {
         this.products = products;
     }
 
-    public List<Client> getClients() {
+    public List<Product> getClients() {
         return clients;
     }
 
-    public void setClients(List<Client> clients) {
+    public void setClients(List<Product> clients) {
         this.clients = clients;
     }
 }

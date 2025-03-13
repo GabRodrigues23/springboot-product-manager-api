@@ -1,5 +1,6 @@
 package com.spring.manager.entity;
 
+import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,9 +23,8 @@ public class Client {
     @Column(length = 15)
     private String phone;
 
-    @ManyToMany()
-    @JoinColumn(name = "sale_id")
-    private Sale sale;
+    @ManyToMany(mappedBy = "clients")
+    private List<Sale> sales;
 
     public long getId() {
         return id;
@@ -66,11 +66,11 @@ public class Client {
         this.phone = phone;
     }
 
-    public Sale getSale() {
-        return sale;
+    public List<Sale> getSales() {
+        return sales;
     }
 
-    public void setSale(Sale sale) {
-        this.sale = sale;
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
     }
 }

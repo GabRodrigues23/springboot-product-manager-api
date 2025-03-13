@@ -14,8 +14,7 @@ public class Category {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Column
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
 
     public long getId() {

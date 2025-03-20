@@ -1,110 +1,88 @@
 package com.spring.manager.service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.manager.dto.ProductDTO;
 import com.spring.manager.entity.Product;
 import com.spring.manager.repository.ProductRepository;
 
+import java.util.List;
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductService {
     
-    @Autowired
-    private ProductRepository repository;
+    private final ProductRepository repository;
+    public ProductService(ProductRepository repository) {
+        this.repository = repository;
+    }
 
     // Create
-    public ProductDTO create(ProductDTO productDTO) {
-        Product product = new Product(
-            productDTO.getId(),
-            productDTO.getBarcode(),
-            productDTO.getDescription(),
-            productDTO.getUnit(),
-            productDTO.getPrice(),
-            productDTO.getStock()
-        );        
-        
-        Product newProduct = repository.save(product);
-
-        return new ProductDTO(
-            newProduct.getId(),
-            newProduct.getBarcode(),
-            newProduct.getDescription(),
-            newProduct.getUnit(),
-            newProduct.getPrice(),
-            newProduct.getStock()
-        );
+    @Transactional
+    public ProductDTO creat(ProductDTO productDTO) {
+        Product product = toEntity(productDTO);
+        Product savedProduct = repository.save(product);
+        return toDTO(savedProduct);
     }
 
-    // Read (Select)
+    // Read (List All)
     public List<ProductDTO> listAll() {
         return repository.findAll().stream()
-            .map(product -> new ProductDTO(
-                product.getId(), 
-                product.getBarcode(), 
-                product.getDescription(), 
-                product.getUnit(), 
-                product.getPrice(), 
-                product.getStock()))
-            .collect(Collectors.toList()
-            );
+            .map(this::toDTO)
+            .toList();
     }
 
+    // Read (By ID)
     public ProductDTO listById(long id) {
-        Optional<Product> optionalProduct = repository.findById(id);
-    
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-            return new ProductDTO(
-                product.getId(), 
-                product.getBarcode(), 
-                product.getDescription(), 
-                product.getUnit(), 
-                product.getPrice(), 
-                product.getStock()
-            );
-        }
-        
-        return null; // Later, replace with a custom exception
+        return repository.findById(id)
+            .map(this::toDTO)
+            .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
     // Update
+    @Transactional
     public ProductDTO update(long id, ProductDTO productDTO) {
-        Optional<Product> optionalProduct = repository.findById(id);
-    
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
+        Product product = repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Product not found"));
+
             product.setBarcode(productDTO.getBarcode());
             product.setDescription(productDTO.getDescription());
             product.setUnit(productDTO.getUnit());
             product.setPrice(productDTO.getPrice());
             product.setStock(productDTO.getStock());
-    
-            Product updatedProduct = repository.save(product);
-    
-            return new ProductDTO(
-                updatedProduct.getId(), 
-                updatedProduct.getBarcode(), 
-                updatedProduct.getDescription(), 
-                updatedProduct.getUnit(), 
-                updatedProduct.getPrice(), 
-                updatedProduct.getStock()
-            );
-        }
-    
-        return null; // Later, replace with a custom exception
+
+            return toDTO(repository.save(product));
     }
-    
+
     // Delete
+    @Transactional
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            return; // Replace with an exception later
+            throw new RuntimeException("Product not found");
         }
         repository.deleteById(id);
     }
 
+    // Utility
+    private ProductDTO toDTO(Product product) {
+        return new ProductDTO(
+            product.getId(),
+            product.getBarcode(),
+            product.getDescription(),
+            product.getUnit(),
+            product.getPrice(),
+            product.getStock()
+        );
+    }
+
+    private Product toEntity(ProductDTO dto) {
+        return new Product(
+            dto.getId(),
+            dto.getBarcode(),
+            dto.getDescription(),
+            dto.getUnit(),
+            dto.getPrice(),
+            dto.getStock()
+        );
+    }
 }

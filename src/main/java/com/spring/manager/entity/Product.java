@@ -44,6 +44,16 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private List<Sale> sales;
 
+    public Product(long id, String barcode, String description, Character unit, BigDecimal price, long stock) {
+        this.id = id;
+        this.barcode = barcode;
+        this.description = description;
+        this.unit = unit;
+        this.price = price;
+        this.stock = stock;
+    }
+
+
     public long getId() {
         return id;
     }

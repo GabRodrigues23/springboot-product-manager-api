@@ -9,8 +9,8 @@ public class ProductDTO {
     private Character unit;
     private BigDecimal price;
     private long stock;
-            
-    public ProductDTO() {
+
+    public ProductDTO() {     
     }
 
     public ProductDTO(long id, String barcode, String description, Character unit, BigDecimal price, long stock) {

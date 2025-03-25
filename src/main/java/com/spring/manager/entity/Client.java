@@ -26,6 +26,15 @@ public class Client {
     @ManyToMany(mappedBy = "clients")
     private List<Sale> sales;
 
+    public Client(long id, String name, String cpf, String cep, String phone, List<Sale> sales) {
+        this.id = id;
+        this.name = name;
+        this.cpf = cpf;
+        this.cep = cep;
+        this.phone = phone;
+        this.sales = sales;
+    }
+
     public long getId() {
         return id;
     }

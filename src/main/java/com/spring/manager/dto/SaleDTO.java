@@ -6,9 +6,9 @@ import com.spring.manager.entity.Product;
 
 public class SaleDTO {
     private long id;
-    private BigDecimal total_price;
+    private BigDecimal totalPrice;
     private BigDecimal discount;
-    private int items_quantity;
+    private int itemsQuantity;
     private String payment;
     private List<Product> products;
     private List<Product> clients;
@@ -16,12 +16,12 @@ public class SaleDTO {
     public SaleDTO() {
     }
 
-    public SaleDTO(long id, BigDecimal total_price, BigDecimal discount, int items_quantity, String payment,
+    public SaleDTO(long id, BigDecimal totalPrice, BigDecimal discount, int itemsQuantity, String payment,
             List<Product> products, List<Product> clients) {
         this.id = id;
-        this.total_price = total_price;
+        this.totalPrice = totalPrice;
         this.discount = discount;
-        this.items_quantity = items_quantity;
+        this.itemsQuantity = itemsQuantity;
         this.payment = payment;
         this.products = products;
         this.clients = clients;
@@ -35,12 +35,12 @@ public class SaleDTO {
         this.id = id;
     }
 
-    public BigDecimal getTotal_price() {
-        return total_price;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal_price(BigDecimal total_price) {
-        this.total_price = total_price;
+    public void setTotal_price(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public BigDecimal getDiscount() {
@@ -51,12 +51,12 @@ public class SaleDTO {
         this.discount = discount;
     }
 
-    public int getItems_quantity() {
-        return items_quantity;
+    public int getItemsQuantity() {
+        return itemsQuantity;
     }
 
-    public void setItems_quantity(int items_quantity) {
-        this.items_quantity = items_quantity;
+    public void setItemsQuantity(int itemsQuantity) {
+        this.itemsQuantity = itemsQuantity;
     }
 
     public String getPayment() {

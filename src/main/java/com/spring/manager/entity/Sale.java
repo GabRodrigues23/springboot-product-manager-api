@@ -13,13 +13,13 @@ public class Sale {
     private long id;
     
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal total_price;
+    private BigDecimal totalPrice;
     
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal discount;
     
     @Column(nullable = false)
-    private int items_quantity;
+    private int itemsQuantity;
 
     @Column(nullable = false, length = 2)
     private String payment;
@@ -32,6 +32,18 @@ public class Sale {
     @JoinTable(name = "SALE_CLIENT", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> clients;
 
+    public Sale() {
+    }
+
+    public Sale(long id, BigDecimal totalPrice, BigDecimal discount, int itemsQuantity, String payment, List<Product> products, List<Product> clients) {
+        this.id = id;
+        this.totalPrice = totalPrice;
+        this.discount = discount;
+        this.itemsQuantity = itemsQuantity;
+        this.payment = payment;
+        this.products = products;
+        this.clients = clients;
+    }
 
     public long getId() {
         return id;
@@ -41,12 +53,12 @@ public class Sale {
         this.id = id;
     }
 
-    public BigDecimal getTotal_price() {
-        return total_price;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal_price(BigDecimal total_price) {
-        this.total_price = total_price;
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public BigDecimal getDiscount() {
@@ -57,12 +69,12 @@ public class Sale {
         this.discount = discount;
     }
 
-    public int getItems_quantity() {
-        return items_quantity;
+    public int getItemsQuantity() {
+        return itemsQuantity;
     }
 
-    public void setItems_quantity(int items_quantity) {
-        this.items_quantity = items_quantity;
+    public void setItemsQuantity(int itemsQuantity) {
+        this.itemsQuantity = itemsQuantity;
     }
 
     public String getPayment() {

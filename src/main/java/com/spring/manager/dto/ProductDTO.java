@@ -68,8 +68,5 @@ public class ProductDTO {
 
     public void setStock(long stock) {
         this.stock = stock;
-    }
-
-    
-    
+    }   
 }

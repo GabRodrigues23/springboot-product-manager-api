@@ -52,8 +52,7 @@ public class Product {
         this.price = price;
         this.stock = stock;
     }
-
-
+    
     public long getId() {
         return id;
     }

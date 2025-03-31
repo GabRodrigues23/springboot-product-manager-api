@@ -19,7 +19,7 @@ public class ProductService {
 
     // Create
     @Transactional
-    public ProductDTO creat(ProductDTO productDTO) {
+    public ProductDTO create(ProductDTO productDTO) {
         Product product = toEntity(productDTO);
         Product savedProduct = repository.save(product);
         return toDTO(savedProduct);
@@ -45,18 +45,18 @@ public class ProductService {
         Product product = repository.findById(id)
             .orElseThrow(() -> new RuntimeException("Product not found"));
 
-            product.setBarcode(productDTO.getBarcode());
-            product.setDescription(productDTO.getDescription());
-            product.setUnit(productDTO.getUnit());
-            product.setPrice(productDTO.getPrice());
-            product.setStock(productDTO.getStock());
+        product.setBarcode(productDTO.getBarcode());
+        product.setDescription(productDTO.getDescription());
+        product.setUnit(productDTO.getUnit());
+        product.setPrice(productDTO.getPrice());
+        product.setStock(productDTO.getStock());
 
-            return toDTO(repository.save(product));
+        return toDTO(repository.save(product));
     }
 
     // Delete
     @Transactional
-    public void delete(Long id) {
+    public void delete(long id) {
         if (!repository.existsById(id)) {
             throw new RuntimeException("Product not found");
         }

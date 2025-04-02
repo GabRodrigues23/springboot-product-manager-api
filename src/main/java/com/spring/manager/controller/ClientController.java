@@ -1,9 +1,7 @@
 package com.spring.manager.controller;
 
 import com.spring.manager.dto.ClientDTO;
-import com.spring.manager.dto.ProductDTO;
 import com.spring.manager.service.ClientService;
-
 
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 
 import java.util.List;
-
-
 
 @RestController
 @RequestMapping("/manager/clients")

@@ -49,7 +49,7 @@ public class ClientService {
         client.setCpf(clientDTO.getCpf());
         client.setCep(clientDTO.getCep());
         client.setPhone(clientDTO.getPhone());
-        client.setSales(clientDTO.getSales());
+        // client.setSales(clientDTO.getSales());
 
         return toDTO(repository.save(client));
     }
@@ -70,8 +70,8 @@ public class ClientService {
             client.getName(), 
             client.getCpf(), 
             client.getCep(), 
-            client.getPhone(), 
-            client.getSales()
+            client.getPhone()
+            // client.getSales()
         );
     }
 
@@ -81,8 +81,8 @@ public class ClientService {
             dto.getName(), 
             dto.getCpf(), 
             dto.getCep(), 
-            dto.getPhone(), 
-            dto.getSales()
+            dto.getPhone()
+            // dto.getSales()
         );
     }
 }

@@ -9,18 +9,18 @@ public class ClientDTO {
     private String cpf;
     private String cep;
     private String phone;
-    private List<Sale> sales;
+    // private List<Sale> sales;
     
     public ClientDTO() {
     }
 
-    public ClientDTO(long id, String name, String cpf, String cep, String phone, List<Sale> sales) {
+    public ClientDTO(long id, String name, String cpf, String cep, String phone /* , List<Sale> sales */) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.cep = cep;
         this.phone = phone;
-        this.sales = sales;
+        // this.sales = sales;
     }
 
     public long getId() {
@@ -63,11 +63,11 @@ public class ClientDTO {
         this.phone = phone;
     }
 
-    public List<Sale> getSales() {
-        return sales;
-    }
+    // public List<Sale> getSales() {
+    //     return sales;
+    // }
 
-    public void setSales(List<Sale> sales) {
-        this.sales = sales;
-    }   
+    // public void setSales(List<Sale> sales) {
+    //     this.sales = sales;
+    // }   
 }

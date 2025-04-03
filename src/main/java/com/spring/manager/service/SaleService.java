@@ -49,8 +49,8 @@ public class SaleService {
         sale.setDiscount(saleDTO.getDiscount());
         sale.setItemsQuantity(saleDTO.getItemsQuantity());
         sale.setPayment(saleDTO.getPayment());
-        sale.setProducts(saleDTO.getProducts());
-        sale.setClients(saleDTO.getClients());
+        // sale.setProducts(saleDTO.getProducts());
+        // sale.setClients(saleDTO.getClients());
 
         return toDTO(repository.save(sale));
     }
@@ -71,9 +71,9 @@ public class SaleService {
             sale.getTotalPrice(),
             sale.getDiscount(),
             sale.getItemsQuantity(),
-            sale.getPayment(),
-            sale.getProducts(),
-            sale.getClients()
+            sale.getPayment()
+            // sale.getProducts(),
+            // sale.getClients()
         );
     }
 
@@ -83,9 +83,9 @@ public class SaleService {
             dto.getTotalPrice(),
             dto.getDiscount(),
             dto.getItemsQuantity(),
-            dto.getPayment(),
-            dto.getProducts(),
-            dto.getClients()
+            dto.getPayment()
+            // dto.getProducts(),
+            // dto.getClients()
         );
     }
 }

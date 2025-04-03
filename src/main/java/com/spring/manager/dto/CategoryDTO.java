@@ -6,15 +6,15 @@ import com.spring.manager.entity.Product;
 public class CategoryDTO {
     private long id;
     private String name;
-    private List<Product> products;
+    // private List<Product> products;
     
     public CategoryDTO() {
     }
 
-    public CategoryDTO(long id, String name, List<Product> products) {
+    public CategoryDTO(long id, String name /*,  List<Product> products */) {
         this.id = id;
         this.name = name;
-        this.products = products;
+        // this.products = products;
     }
 
     public long getId() {
@@ -33,11 +33,11 @@ public class CategoryDTO {
         this.name = name;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
+    // public List<Product> getProducts() {
+    //     return products;
+    // }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+    // public void setProducts(List<Product> products) {
+    //     this.products = products;
+    // }
 }

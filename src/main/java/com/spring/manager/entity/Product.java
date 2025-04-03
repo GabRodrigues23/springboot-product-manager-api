@@ -37,12 +37,12 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime updateAt;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    // @ManyToOne
+    // @JoinColumn(name = "category_id")
+    // private Category category;
 
-    @ManyToMany(mappedBy = "products")
-    private List<Sale> sales;
+    // @ManyToMany(mappedBy = "products")
+    // private List<Sale> sales;
 
     public Product(long id, String barcode, String description, Character unit, BigDecimal price, long stock) {
         this.id = id;
@@ -117,19 +117,19 @@ public class Product {
         this.updateAt = updateAt;
     }
 
-    public Category getCategory() {
-        return category;
-    }
+    // public Category getCategory() {
+    //     return category;
+    // }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+    // public void setCategory(Category category) {
+    //     this.category = category;
+    // }
 
-    public List<Sale> getSales() {
-        return sales;
-    }
+    // public List<Sale> getSales() {
+    //     return sales;
+    // }
 
-    public void setSales(List<Sale> sales) {
-        this.sales = sales;
-    }
+    // public void setSales(List<Sale> sales) {
+    //     this.sales = sales;
+    // }
 }

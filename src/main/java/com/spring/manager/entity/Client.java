@@ -23,16 +23,16 @@ public class Client {
     @Column(length = 15)
     private String phone;
 
-    @ManyToMany(mappedBy = "clients")
-    private List<Sale> sales;
+    // @ManyToMany(mappedBy = "clients")
+    // private List<Sale> sales;
 
-    public Client(long id, String name, String cpf, String cep, String phone, List<Sale> sales) {
+    public Client(long id, String name, String cpf, String cep, String phone /* , List<Sale> sales */) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.cep = cep;
         this.phone = phone;
-        this.sales = sales;
+        // this.sales = sales;
     }
 
     public long getId() {
@@ -75,11 +75,11 @@ public class Client {
         this.phone = phone;
     }
 
-    public List<Sale> getSales() {
-        return sales;
-    }
+    // public List<Sale> getSales() {
+    //     return sales;
+    // }
 
-    public void setSales(List<Sale> sales) {
-        this.sales = sales;
-    }
+    // public void setSales(List<Sale> sales) {
+    //     this.sales = sales;
+    // }
 }

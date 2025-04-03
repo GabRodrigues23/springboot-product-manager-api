@@ -46,7 +46,7 @@ public class CategoryService {
             .orElseThrow(() -> new RuntimeException("Category not found"));
 
         category.setName(categoryDTO.getName());
-        category.setProducts(categoryDTO.getProducts());
+        // category.setProducts(categoryDTO.getProducts());
 
         return toDTO(repository.save(category));
     }
@@ -64,16 +64,16 @@ public class CategoryService {
     private CategoryDTO toDTO(Category category) {
         return new CategoryDTO(
             category.getId(), 
-            category.getName(), 
-            category.getProducts()
+            category.getName()
+            // category.getProducts()
         );
     } 
 
     private Category toEntity(CategoryDTO dto) {
         return new Category(
             dto.getId(),
-            dto.getName(),
-            dto.getProducts()
+            dto.getName()
+            // dto.getProducts()
         );
     }
 }

@@ -14,13 +14,13 @@ public class Category {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Product> products;
+    // @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<Product> products;
 
-    public Category(long id, String name, List<Product> products) {
+    public Category(long id, String name /* , List<Product> products */) {
         this.id = id;
         this.name = name;
-        this.products = products;
+        // this.products = products;
     }
 
     public long getId() {
@@ -39,11 +39,11 @@ public class Category {
         this.name = name;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
+    // public List<Product> getProducts() {
+    //     return products;
+    // }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }   
+    // public void setProducts(List<Product> products) {
+    //     this.products = products;
+    // }   
 }
